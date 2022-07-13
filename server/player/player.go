@@ -12,6 +12,7 @@ import (
 	"github.com/df-mc/atomic"
 	"github.com/go-gl/mathgl/mgl64"
 	"github.com/google/uuid"
+	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
 	"github.com/xJustJqy/MockingJay/server/block"
 	"github.com/xJustJqy/MockingJay/server/block/cube"
 	"github.com/xJustJqy/MockingJay/server/block/model"
@@ -134,7 +135,21 @@ func New(name string, skin skin.Skin, pos mgl64.Vec3) *Player {
 		cooldowns:         make(map[itemHash]time.Time),
 		mc:                &entity.MovementComputer{Gravity: 0.06, Drag: 0.02, DragBeforeGravity: true},
 	}
+	p.session().PacketHandle(p.packet)
 	return p
+}
+
+func (p *Player) packet(pk packet.Packet) {
+	fmt.Print(pk)
+	p.Handler().HandlePacket(pk)
+	switch tpk := pk.(type) {
+	case *packet.Text:
+		if tpk.TextType != packet.TextTypeChat {
+			return
+		}
+		message := tpk.Message
+		p.Chat(message)
+	}
 }
 
 // NewWithSession returns a new player for a network session, so that the network session can control the
@@ -318,11 +333,11 @@ func (p *Player) RemoveBossBar() {
 // player and is formatted following the rules of fmt.Sprintln.
 func (p *Player) Chat(msg ...any) {
 	message := format(msg)
-	ctx := event.C()
-	if p.Handler().HandleChat(ctx, &message); ctx.Cancelled() {
+	ctx := event.MC(message, "<%v> %v")
+	if p.Handler().HandleChat(ctx); ctx.Cancelled() {
 		return
 	}
-	_, _ = fmt.Fprintf(chat.Global, "<%v> %v\n", p.name, message)
+	_, _ = fmt.Fprintf(chat.Global, ctx.Format() + "\n", p.name, ctx.Message())
 }
 
 // ExecuteCommand executes a command passed as the player. If the command could not be found, or if the usage
@@ -437,6 +452,12 @@ func (p *Player) Speed() float64 {
 // Health returns the current health of the player. It will always be lower than Player.MaxHealth().
 func (p *Player) Health() float64 {
 	return p.health.Health()
+}
+
+// HealthManager returns the player's HealthManager.
+// This is used as a parameter when using Session.SendHealth().
+func (p *Player) HealthManager() *entity.HealthManager {
+	return p.health
 }
 
 // MaxHealth returns the maximum amount of health that a player may have. The MaxHealth will always be higher
@@ -2651,6 +2672,15 @@ func (p *Player) Data() Data {
 // session returns the network session of the player. If it has one, it is returned. If not, a no-op session
 // is returned.
 func (p *Player) session() *session.Session {
+	if s := p.s.Load(); s != nil {
+		return s
+	}
+	return session.Nop
+}
+
+// Session returns the network session of the player. If it has one, it is returned. If not, a no-op session
+// is returned.
+func (p *Player) Session() *session.Session {
 	if s := p.s.Load(); s != nil {
 		return s
 	}

@@ -83,6 +83,8 @@ type Session struct {
 	switchingWorld atomic.Bool
 
 	closeBackground chan struct{}
+
+	packetHandle func(pk packet.Packet)
 }
 
 // Conn represents a connection that packets are read from and written to by a Session. In addition, it holds some
@@ -302,6 +304,9 @@ func (s *Session) handlePackets() {
 		if err != nil {
 			return
 		}
+		if s.packetHandle != nil{
+			s.packetHandle(pk)
+		}
 		if err := s.handlePacket(pk); err != nil {
 			// An error occurred during the handling of a packet. Print the error and stop handling any more
 			// packets.
@@ -429,6 +434,10 @@ func (s *Session) handlePacket(pk packet.Packet) error {
 		return fmt.Errorf("%T: %w", pk, err)
 	}
 	return nil
+}
+
+func (s *Session) PacketHandle(cl func(packet.Packet)) {
+	s.packetHandle = cl
 }
 
 // registerHandlers registers all packet handlers found in the packetHandler package.

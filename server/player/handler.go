@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/go-gl/mathgl/mgl64"
+	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
 	"github.com/xJustJqy/MockingJay/server/block/cube"
 	"github.com/xJustJqy/MockingJay/server/cmd"
 	"github.com/xJustJqy/MockingJay/server/entity"
@@ -37,7 +38,7 @@ type Handler interface {
 	// HandleChat handles a message sent in the chat by a player. ctx.Cancel() may be called to cancel the
 	// message being sent in chat.
 	// The message may be changed by assigning to *message.
-	HandleChat(ctx *event.Context, message *string)
+	HandleChat(ctx *event.MessageContext)
 	// HandleFoodLoss handles the food bar of a player depleting naturally, for example because the player was
 	// sprinting and jumping. ctx.Cancel() may be called to cancel the food points being lost.
 	HandleFoodLoss(ctx *event.Context, from, to int)
@@ -132,6 +133,8 @@ type Handler interface {
 	// HandleQuit handles the closing of a player. It is always called when the player is disconnected,
 	// regardless of the reason.
 	HandleQuit()
+	// HandlePacket handles incoming packets from a player.
+	HandlePacket(pk packet.Packet)
 }
 
 // NopHandler implements the Handler interface but does not execute any code when an event is called. The
@@ -151,7 +154,7 @@ func (NopHandler) HandleToggleSprint(*event.Context, bool)                      
 func (NopHandler) HandleToggleSneak(*event.Context, bool)                                     {}
 func (NopHandler) HandleCommandExecution(*event.Context, cmd.Command, []string)               {}
 func (NopHandler) HandleTransfer(*event.Context, *net.UDPAddr)                                {}
-func (NopHandler) HandleChat(*event.Context, *string)                                         {}
+func (NopHandler) HandleChat(*event.MessageContext)                                   {}
 func (NopHandler) HandleSkinChange(*event.Context, *skin.Skin)                                {}
 func (NopHandler) HandleStartBreak(*event.Context, cube.Pos)                                  {}
 func (NopHandler) HandleBlockBreak(*event.Context, cube.Pos, *[]item.Stack)                   {}
@@ -173,3 +176,4 @@ func (NopHandler) HandleFoodLoss(*event.Context, int, int)                      
 func (NopHandler) HandleDeath(damage.Source)                                                  {}
 func (NopHandler) HandleRespawn(*mgl64.Vec3, **world.World)                                   {}
 func (NopHandler) HandleQuit()                                                                {}
+func (NopHandler) HandlePacket(packet.Packet)												  {}
