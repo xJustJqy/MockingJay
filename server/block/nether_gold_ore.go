@@ -1,8 +1,9 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
 	"math/rand"
+
+	"github.com/xJustJqy/MockingJay/server/item"
 )
 
 // NetherGoldOre is a variant of gold ore found exclusively in The Nether.

@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/df-mc/dragonfly/server/world"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Trapdoor is a model used for trapdoors. It has no solid faces and a bounding box that changes depending on

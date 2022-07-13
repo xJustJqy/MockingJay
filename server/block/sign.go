@@ -1,15 +1,16 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/df-mc/dragonfly/server/internal/nbtconv"
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world"
-	"github.com/df-mc/dragonfly/server/world/particle"
-	"github.com/go-gl/mathgl/mgl64"
-	"github.com/google/uuid"
 	"image/color"
 	"strings"
+
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/google/uuid"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/internal/nbtconv"
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world"
+	"github.com/xJustJqy/MockingJay/server/world/particle"
 )
 
 // Sign is a non-solid block that can display text.

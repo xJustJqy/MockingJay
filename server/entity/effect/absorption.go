@@ -1,8 +1,9 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Absorption is a lasting effect that increases the health of an entity over the maximum. Once this extra

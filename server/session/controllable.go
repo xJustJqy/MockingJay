@@ -1,16 +1,16 @@
 package session
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/df-mc/dragonfly/server/cmd"
-	"github.com/df-mc/dragonfly/server/entity/effect"
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/player/chat"
-	"github.com/df-mc/dragonfly/server/player/form"
-	"github.com/df-mc/dragonfly/server/player/skin"
-	"github.com/df-mc/dragonfly/server/world"
 	"github.com/go-gl/mathgl/mgl64"
 	"github.com/google/uuid"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/cmd"
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/player/chat"
+	"github.com/xJustJqy/MockingJay/server/player/form"
+	"github.com/xJustJqy/MockingJay/server/player/skin"
+	"github.com/xJustJqy/MockingJay/server/world"
 	"golang.org/x/text/language"
 )
 

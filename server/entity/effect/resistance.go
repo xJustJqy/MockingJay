@@ -1,8 +1,9 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/damage"
 	"image/color"
+
+	"github.com/xJustJqy/MockingJay/server/entity/damage"
 )
 
 // Resistance is a lasting effect that reduces the damage taken from any sources except for void damage or

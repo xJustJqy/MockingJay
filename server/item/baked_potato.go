@@ -1,6 +1,6 @@
 package item
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 // BakedPotato is a food item that can be eaten by the player.
 type BakedPotato struct {

@@ -1,8 +1,8 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/df-mc/dragonfly/server/world"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Barrier is a transparent solid block used to create invisible boundaries.

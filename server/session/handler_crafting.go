@@ -2,11 +2,12 @@ package session
 
 import (
 	"fmt"
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/item/creative"
-	"github.com/df-mc/dragonfly/server/item/inventory"
-	"github.com/df-mc/dragonfly/server/item/recipe"
+
 	"github.com/sandertv/gophertunnel/minecraft/protocol"
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/item/creative"
+	"github.com/xJustJqy/MockingJay/server/item/inventory"
+	"github.com/xJustJqy/MockingJay/server/item/recipe"
 	"golang.org/x/exp/slices"
 )
 

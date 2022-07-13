@@ -1,9 +1,10 @@
 package item
 
 import (
-	"github.com/df-mc/dragonfly/server/item/potion"
-	"github.com/df-mc/dragonfly/server/world"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/item/potion"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Potion is an item that grants effects on consumption.

@@ -1,10 +1,11 @@
 package session
 
 import (
-	"github.com/df-mc/dragonfly/server/player/scoreboard"
+	"time"
+
 	"github.com/sandertv/gophertunnel/minecraft/protocol"
 	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
-	"time"
+	"github.com/xJustJqy/MockingJay/server/player/scoreboard"
 )
 
 // SendMessage ...

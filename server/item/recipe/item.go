@@ -1,9 +1,10 @@
 package recipe
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world"
 	"math"
+
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // inputItems is a type representing a list of input items, with helper functions to convert them to

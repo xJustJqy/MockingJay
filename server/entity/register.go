@@ -1,6 +1,6 @@
 package entity
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 // init registers all entities that can be saved in a world.World, so that they can be loaded when found in the world
 // save.

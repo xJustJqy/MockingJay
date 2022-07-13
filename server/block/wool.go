@@ -1,9 +1,9 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world"
-	"github.com/df-mc/dragonfly/server/world/sound"
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world"
+	"github.com/xJustJqy/MockingJay/server/world/sound"
 )
 
 // Wool is a colourful block that can be obtained by killing/shearing sheep, or crafted using four string.

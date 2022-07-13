@@ -1,11 +1,11 @@
 package player
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/effect"
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world"
 	"github.com/go-gl/mathgl/mgl64"
 	"github.com/google/uuid"
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Data is a struct that contains all the data of that player to be passed on to the Provider and saved.

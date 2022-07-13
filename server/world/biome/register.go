@@ -1,6 +1,6 @@
 package biome
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 // init registers all biomes that can be used in a world.World.
 func init() {

@@ -3,7 +3,6 @@ package packbuilder
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/df-mc/dragonfly/server/world"
 	"image"
 	"image/png"
 	"io/ioutil"
@@ -11,6 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 	_ "unsafe" // Imported for compiler directives.
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // buildItems builds all the item-related files for the resource pack. This includes textures, language

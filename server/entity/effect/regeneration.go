@@ -1,10 +1,11 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/healing"
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/entity/healing"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Regeneration is an effect that causes the entity that it is added to slowly regenerate health. The level

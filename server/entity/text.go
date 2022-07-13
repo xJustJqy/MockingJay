@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/df-mc/dragonfly/server/internal/nbtconv"
 	"github.com/go-gl/mathgl/mgl64"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/internal/nbtconv"
 )
 
 // Text is an entity that only displays floating text. The entity is otherwise invisible and cannot be moved.

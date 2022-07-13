@@ -1,8 +1,9 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // HealthBoost causes the affected entity to have its maximum health changed for a specific duration.

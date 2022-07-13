@@ -1,10 +1,11 @@
 package item
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/effect"
-	"github.com/df-mc/dragonfly/server/world"
 	"math/rand"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // PoisonousPotato is a type of potato that can poison the player.

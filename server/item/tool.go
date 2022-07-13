@@ -1,7 +1,7 @@
 package item
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 var (

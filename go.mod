@@ -1,4 +1,4 @@
-module github.com/df-mc/dragonfly
+module github.com/xJustJqy/MockingJay
 
 go 1.18
 

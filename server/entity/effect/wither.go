@@ -1,10 +1,11 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/damage"
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/entity/damage"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Wither is a lasting effect that causes an entity to take continuous damage that is capable of killing an

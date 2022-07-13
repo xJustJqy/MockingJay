@@ -3,10 +3,11 @@ package nbtconv
 import (
 	"bytes"
 	"encoding/gob"
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world"
-	"github.com/df-mc/dragonfly/server/world/chunk"
 	"sort"
+
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world"
+	"github.com/xJustJqy/MockingJay/server/world/chunk"
 )
 
 // WriteItem encodes an item stack into a map that can be encoded using NBT.

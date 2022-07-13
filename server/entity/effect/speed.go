@@ -1,8 +1,9 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Speed is a lasting effect that increases the speed of an entity by 20% for each level that the effect has.

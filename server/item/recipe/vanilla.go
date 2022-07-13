@@ -2,11 +2,12 @@ package recipe
 
 import (
 	// Ensure all blocks and items are registered before trying to load vanilla recipes.
-	_ "github.com/df-mc/dragonfly/server/block"
-	_ "github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world"
+	_ "github.com/xJustJqy/MockingJay/server/block"
+	_ "github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world"
 
 	_ "embed"
+
 	"github.com/sandertv/gophertunnel/minecraft/nbt"
 )
 

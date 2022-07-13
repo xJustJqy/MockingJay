@@ -1,7 +1,7 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
+	"github.com/xJustJqy/MockingJay/server/item"
 )
 
 // AncientDebris is a rare ore found within The Nether.

@@ -1,10 +1,11 @@
 package entity
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/df-mc/dragonfly/server/world"
-	"github.com/go-gl/mathgl/mgl64"
 	"math"
+
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // MovementComputer is used to compute movement of an entity. When constructed, the Gravity of the entity

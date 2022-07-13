@@ -1,8 +1,9 @@
 package item
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // DriedKelp is a food item that can be quickly eaten by the player.

@@ -1,6 +1,6 @@
 package block
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 // MuddyMangroveRoots are a decorative variant of mangrove roots.
 type MuddyMangroveRoots struct {

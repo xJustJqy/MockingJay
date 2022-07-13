@@ -1,9 +1,10 @@
 package item
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/effect"
-	"github.com/df-mc/dragonfly/server/world"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // SpiderEye is a poisonous food and brewing item.

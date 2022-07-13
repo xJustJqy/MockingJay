@@ -1,8 +1,9 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
 	"math/rand"
+
+	"github.com/xJustJqy/MockingJay/server/item"
 )
 
 // SeaLantern is an underwater light sources that appear in ocean monuments and underwater ruins.

@@ -2,10 +2,11 @@ package session
 
 import (
 	"fmt"
-	"github.com/df-mc/dragonfly/server/block"
-	"github.com/df-mc/dragonfly/server/entity/effect"
-	"github.com/df-mc/dragonfly/server/item"
+
 	"github.com/sandertv/gophertunnel/minecraft/protocol"
+	"github.com/xJustJqy/MockingJay/server/block"
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
+	"github.com/xJustJqy/MockingJay/server/item"
 )
 
 // handleBeaconPayment handles the selection of effects in a beacon and the removal of the item used to pay

@@ -1,11 +1,12 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/damage"
-	"github.com/df-mc/dragonfly/server/entity/healing"
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/entity/damage"
+	"github.com/xJustJqy/MockingJay/server/entity/healing"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // LastingType represents an effect type that can have a duration. An effect can be made using it by calling effect.New

@@ -1,9 +1,10 @@
 package entity
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
-	"github.com/go-gl/mathgl/mgl64"
 	"sync"
+
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // transform holds the base position and velocity of an entity. It holds several methods which can be used when

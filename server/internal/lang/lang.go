@@ -3,7 +3,8 @@ package lang
 import (
 	"embed"
 	"encoding/json"
-	"github.com/df-mc/dragonfly/server/world"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 	"golang.org/x/text/language"
 )
 

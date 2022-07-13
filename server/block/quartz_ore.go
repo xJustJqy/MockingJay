@@ -1,6 +1,6 @@
 package block
 
-import "github.com/df-mc/dragonfly/server/item"
+import "github.com/xJustJqy/MockingJay/server/item"
 
 // NetherQuartzOre is ore found in the Nether.
 type NetherQuartzOre struct {

@@ -1,6 +1,6 @@
 package damage
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 type (
 	// Source represents the source of the damage dealt to an entity. This source may be passed to the Hurt()

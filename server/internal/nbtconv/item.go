@@ -1,7 +1,7 @@
 package nbtconv
 
 import (
-	"github.com/df-mc/dragonfly/server/item/inventory"
+	"github.com/xJustJqy/MockingJay/server/item/inventory"
 )
 
 // InvFromNBT decodes the data of an NBT slice into the inventory passed.

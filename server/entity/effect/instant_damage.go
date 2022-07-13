@@ -1,10 +1,11 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/damage"
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/entity/damage"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // InstantDamage is an instant effect that causes a living entity to immediately take some damage, depending

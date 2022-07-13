@@ -1,11 +1,12 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/item/enchantment"
-	"github.com/df-mc/dragonfly/server/world"
 	"math"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/item/enchantment"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Breakable represents a block that may be broken by a player in survival mode. Blocks not include are blocks

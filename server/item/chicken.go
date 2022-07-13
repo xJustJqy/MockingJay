@@ -1,10 +1,11 @@
 package item
 
 import (
-	"github.com/df-mc/dragonfly/server/entity/effect"
-	"github.com/df-mc/dragonfly/server/world"
 	"math/rand"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Chicken is a food item obtained from chickens. It can be cooked in a furnace, smoker, or campfire.

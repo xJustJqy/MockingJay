@@ -1,8 +1,9 @@
 package entity
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // SwingArmAction is a world.EntityAction that makes an entity or player swing its arm.

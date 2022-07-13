@@ -2,11 +2,12 @@ package session
 
 import (
 	"fmt"
-	"github.com/df-mc/dragonfly/server/block"
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world/sound"
-	"github.com/sandertv/gophertunnel/minecraft/protocol"
 	"math/rand"
+
+	"github.com/sandertv/gophertunnel/minecraft/protocol"
+	"github.com/xJustJqy/MockingJay/server/block"
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world/sound"
 )
 
 // handleCraftRecipeOptional handles the CraftRecipeOptional request action, sent when taking a result from an anvil

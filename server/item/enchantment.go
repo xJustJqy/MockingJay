@@ -1,8 +1,9 @@
 package item
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
 	"reflect"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Enchantment is an enchantment that can be applied to a Stack. It holds an EnchantmentType and level that influences

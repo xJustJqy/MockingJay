@@ -1,6 +1,6 @@
 package server
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 // Config is the configuration of a Dragonfly server. It holds settings that affect different aspects of the
 // server, such as its name and maximum players.

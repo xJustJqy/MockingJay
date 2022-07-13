@@ -1,7 +1,7 @@
 package world
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
 )
 
 // BlockModel represents the model of a block. These models specify the ways a block can be collided with and

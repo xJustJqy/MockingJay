@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/df-mc/dragonfly/server"
-	"github.com/df-mc/dragonfly/server/player/chat"
-	"github.com/pelletier/go-toml"
-	"github.com/sirupsen/logrus"
 	"io/ioutil"
 	"os"
+
+	"github.com/pelletier/go-toml"
+	"github.com/sirupsen/logrus"
+	"github.com/xJustJqy/MockingJay/server"
+	"github.com/xJustJqy/MockingJay/server/player/chat"
 )
 
 func main() {

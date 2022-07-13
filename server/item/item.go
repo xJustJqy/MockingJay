@@ -2,15 +2,16 @@ package item
 
 import (
 	"encoding/binary"
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/df-mc/dragonfly/server/entity/effect"
-	"github.com/df-mc/dragonfly/server/internal/lang"
-	"github.com/df-mc/dragonfly/server/world"
-	"github.com/go-gl/mathgl/mgl64"
-	"golang.org/x/text/language"
 	"image/color"
 	"math"
 	"time"
+
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
+	"github.com/xJustJqy/MockingJay/server/internal/lang"
+	"github.com/xJustJqy/MockingJay/server/world"
+	"golang.org/x/text/language"
 )
 
 // MaxCounter represents an item that has a specific max count. By default, each item will be expected to have

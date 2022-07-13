@@ -1,9 +1,10 @@
 package iteminternal
 
 import (
-	"github.com/df-mc/dragonfly/server/item/category"
-	"golang.org/x/exp/maps"
 	"strings"
+
+	"github.com/xJustJqy/MockingJay/server/item/category"
+	"golang.org/x/exp/maps"
 )
 
 // ComponentBuilder represents a builder that can be used to construct an item components map to be sent to a client.

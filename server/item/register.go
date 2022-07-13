@@ -1,8 +1,8 @@
 package item
 
 import (
-	"github.com/df-mc/dragonfly/server/item/potion"
-	"github.com/df-mc/dragonfly/server/world"
+	"github.com/xJustJqy/MockingJay/server/item/potion"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 //noinspection SpellCheckingInspection

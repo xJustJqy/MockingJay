@@ -1,9 +1,10 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Hunger is a lasting effect that causes an affected player to gradually lose saturation and food.

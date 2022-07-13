@@ -1,6 +1,6 @@
 package item
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 // Rabbit is a food item obtained from rabbits. It can be cooked in a furnace, smoker, or campfire.
 type Rabbit struct {

@@ -3,13 +3,14 @@ package block
 //lint:file-ignore ST1022 Exported variables in this package have compiler directives. These variables are not otherwise exposed to users.
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/df-mc/dragonfly/server/entity"
-	"github.com/df-mc/dragonfly/server/entity/damage"
-	"github.com/df-mc/dragonfly/server/event"
-	"github.com/df-mc/dragonfly/server/world"
 	"math/rand"
 	"time"
+
+	"github.com/xJustJqy/MockingJay/server/block/cube"
+	"github.com/xJustJqy/MockingJay/server/entity"
+	"github.com/xJustJqy/MockingJay/server/entity/damage"
+	"github.com/xJustJqy/MockingJay/server/event"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Fire is a non-solid block that can spread to nearby flammable blocks.

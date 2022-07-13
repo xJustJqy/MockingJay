@@ -3,10 +3,11 @@ package inventory
 import (
 	"errors"
 	"fmt"
-	"github.com/df-mc/dragonfly/server/item"
 	"math"
 	"strings"
 	"sync"
+
+	"github.com/xJustJqy/MockingJay/server/item"
 )
 
 // Inventory represents an inventory containing items. These inventories may be carried by entities or may be

@@ -3,8 +3,9 @@ package nbtconv
 import (
 	"bytes"
 	"encoding/gob"
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world"
+
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // ReadItem decodes the data of an item into an item stack.

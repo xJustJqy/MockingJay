@@ -1,8 +1,9 @@
 package effect
 
 import (
-	"github.com/df-mc/dragonfly/server/world"
 	"image/color"
+
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // Slowness is a lasting effect that decreases the movement speed of a living entity by 15% for each level

@@ -1,8 +1,9 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
 	"math/rand"
+
+	"github.com/xJustJqy/MockingJay/server/item"
 )
 
 // Melon is a fruit block that grows from melon stems.

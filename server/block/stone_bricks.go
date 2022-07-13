@@ -1,6 +1,6 @@
 package block
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 // StoneBricks are materials found in structures such as strongholds, igloo basements, jungle temples, ocean ruins
 // and ruined portals.

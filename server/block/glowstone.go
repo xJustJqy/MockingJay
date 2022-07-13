@@ -1,9 +1,10 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/world/sound"
 	"math/rand"
+
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/world/sound"
 )
 
 // Glowstone is commonly found on the ceiling of the nether dimension.

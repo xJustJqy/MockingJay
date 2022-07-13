@@ -1,9 +1,10 @@
 package trace
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/go-gl/mathgl/mgl64"
 	"math"
+
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
 )
 
 // BBoxResult is the result of a basic ray trace collision with a bounding box.

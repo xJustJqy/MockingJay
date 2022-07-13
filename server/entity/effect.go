@@ -2,9 +2,10 @@ package entity
 
 import (
 	"fmt"
-	"github.com/df-mc/dragonfly/server/entity/effect"
 	"reflect"
 	"sync"
+
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
 )
 
 // EffectManager manages the effects of an entity. The effect manager will only store effects that last for

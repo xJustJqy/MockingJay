@@ -3,27 +3,28 @@ package session
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/df-mc/atomic"
-	"github.com/df-mc/dragonfly/server/block"
-	"github.com/df-mc/dragonfly/server/entity"
-	"github.com/df-mc/dragonfly/server/entity/effect"
-	"github.com/df-mc/dragonfly/server/internal/nbtconv"
-	"github.com/df-mc/dragonfly/server/item"
-	"github.com/df-mc/dragonfly/server/item/creative"
-	"github.com/df-mc/dragonfly/server/item/inventory"
-	"github.com/df-mc/dragonfly/server/item/recipe"
-	"github.com/df-mc/dragonfly/server/player/form"
-	"github.com/df-mc/dragonfly/server/player/skin"
-	"github.com/df-mc/dragonfly/server/world"
-	"github.com/go-gl/mathgl/mgl64"
-	"github.com/google/uuid"
-	"github.com/sandertv/gophertunnel/minecraft/protocol"
-	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
 	"math"
 	"net"
 	"strings"
 	"time"
 	_ "unsafe" // Imported for compiler directives.
+
+	"github.com/df-mc/atomic"
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/google/uuid"
+	"github.com/sandertv/gophertunnel/minecraft/protocol"
+	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
+	"github.com/xJustJqy/MockingJay/server/block"
+	"github.com/xJustJqy/MockingJay/server/entity"
+	"github.com/xJustJqy/MockingJay/server/entity/effect"
+	"github.com/xJustJqy/MockingJay/server/internal/nbtconv"
+	"github.com/xJustJqy/MockingJay/server/item"
+	"github.com/xJustJqy/MockingJay/server/item/creative"
+	"github.com/xJustJqy/MockingJay/server/item/inventory"
+	"github.com/xJustJqy/MockingJay/server/item/recipe"
+	"github.com/xJustJqy/MockingJay/server/player/form"
+	"github.com/xJustJqy/MockingJay/server/player/skin"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // StopShowingEntity stops showing a world.Entity to the Session. It will be completely invisible until a call to
@@ -765,10 +766,10 @@ func protocolToSkin(sk protocol.Skin) (s skin.Skin, err error) {
 // The following functions use the go:linkname directive in order to make sure the item.byID and item.toID
 // functions do not need to be exported.
 
-//go:linkname item_id github.com/df-mc/dragonfly/server/item.id
+//go:linkname item_id github.com/xJustJqy/MockingJay/server/item.id
 //noinspection ALL
 func item_id(s item.Stack) int32
 
-//go:linkname world_add github.com/df-mc/dragonfly/server/world.add
+//go:linkname world_add github.com/xJustJqy/MockingJay/server/world.add
 //noinspection ALL
 func world_add(e world.Entity, w *world.World)

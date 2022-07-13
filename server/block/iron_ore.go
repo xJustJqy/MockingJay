@@ -1,7 +1,7 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/item"
+	"github.com/xJustJqy/MockingJay/server/item"
 )
 
 // IronOre is a mineral block found underground.

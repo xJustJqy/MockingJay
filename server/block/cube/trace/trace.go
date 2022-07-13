@@ -1,9 +1,10 @@
 package trace
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube"
-	"github.com/go-gl/mathgl/mgl64"
 	"math"
+
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/xJustJqy/MockingJay/server/block/cube"
 )
 
 // TraverseBlocks performs a ray trace between the start and end coordinates.

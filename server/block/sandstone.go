@@ -1,6 +1,6 @@
 package block
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 // Sandstone is a solid block commonly found in deserts and beaches underneath sand.
 type Sandstone struct {

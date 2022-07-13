@@ -1,10 +1,11 @@
 package entity
 
 import (
-	"github.com/df-mc/dragonfly/server/block/cube/trace"
-	"github.com/df-mc/dragonfly/server/world"
-	"github.com/go-gl/mathgl/mgl64"
 	"math"
+
+	"github.com/go-gl/mathgl/mgl64"
+	"github.com/xJustJqy/MockingJay/server/block/cube/trace"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // ProjectileComputer is used to compute movement of a projectile. When constructed, a MovementComputer must be passed.

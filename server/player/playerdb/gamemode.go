@@ -1,6 +1,6 @@
 package playerdb
 
-import "github.com/df-mc/dragonfly/server/world"
+import "github.com/xJustJqy/MockingJay/server/world"
 
 const (
 	survival = uint8(iota)

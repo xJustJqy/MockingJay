@@ -1,8 +1,8 @@
 package block
 
 import (
-	"github.com/df-mc/dragonfly/server/block/model"
-	"github.com/df-mc/dragonfly/server/world"
+	"github.com/xJustJqy/MockingJay/server/block/model"
+	"github.com/xJustJqy/MockingJay/server/world"
 )
 
 // solid represents a block that is fully solid. It always returns a model.Solid when Model is called.
