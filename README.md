@@ -5,8 +5,6 @@
 
 MockingJay is a heavily asynchronous server software for Minecraft Bedrock Edition written in Go. This software was forked from [Dragonfly](https://github.com/df-mc/dragonfly). It is being modified to accomodate a less source-heavy development style, allowing for plugins to be developed and shared. MockingJay is generally meant for use as a library.
 
-[![Discord Banner 2](https://discordapp.com/api/guilds/623638955262345216/widget.png?style=banner2)](https://discord.gg/U4kFWHhTNR)
-
 ## Getting started
 Running MockingJay requires at least **Go 1.18**. After starting the server through one of the methods below,
 **ctrl+c** may be used to shut down the server. Also check out the [wiki](https://github.com/xJustJqy/MockingJay/wiki) for
