@@ -5,6 +5,7 @@ import (
 	"context"
 	_ "embed"
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"math/rand"
 	"os"
@@ -45,7 +46,10 @@ import (
 	"github.com/xJustJqy/MockingJay/server/world/generator"
 	"github.com/xJustJqy/MockingJay/server/world/mcdb"
 	"golang.org/x/exp/maps"
+	"golang.org/x/exp/slices"
 )
+
+var instance *Server
 
 // Server implements a Dragonfly server. It runs the main server loop and handles the connections of players
 // trying to join the server.
@@ -144,6 +148,65 @@ func New(c *Config, log Logger) *Server {
 	return s
 }
 
+func GetInstance() *Server {
+	return instance
+}
+
+func (srv *Server) GetOperators() []string {
+	return srv.c.Server.Operators
+}
+
+func (srv *Server) IsOperator(name string) bool {
+	ops := srv.GetOperators()
+	for _, n := range ops {
+		if n == name {
+			return true
+		}
+	}
+	return false
+}
+
+func (srv *Server) SetOperator(name string, operator bool) {
+	index := (func() int {
+		for i, n := range srv.c.Server.Operators {
+			if n == name {
+				return i
+			}
+		}
+		return -1
+	})()
+	if !operator {
+		if index < 0 {
+			return
+		}
+		srv.c.Server.Operators = slices.Delete(srv.c.Server.Operators, index, index+1)
+	} else {
+		if index >= 0 {
+			return
+		}
+		srv.c.Server.Operators = append(srv.c.Server.Operators, name)
+	}
+	srv.saveConfig()
+}
+
+func (srv *Server) saveConfig() {
+	data, err := json.Marshal(srv.c.Marshalable())
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	if err := os.WriteFile(getConfigPath(), data, 0644); err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+
+func getConfigPath() string {
+	_, filename, _, _ := runtime.Caller(0)
+	dirname := filepath.Dir(filename)
+	return strings.Split(dirname, "\\server")[0] + "\\config.json"
+}
+
 // HandleFunc is a function that may be passed to Server.Accept(). It can be used to prepare the session of a
 // player before it can do anything.
 type HandleFunc func(p *player.Player)
@@ -193,11 +256,15 @@ func (srv *Server) End() *world.World {
 // goroutine. Connections will be accepted until the listener is closed using a call to Close.
 // Once started, players may be accepted using Server.Accept().
 func (srv *Server) Start() error {
+	if instance != nil {
+		panic("Server already exists!")
+	}
+	instance = srv
 	if !srv.started.CAS(false, true) {
-		panic("srv already running")
+		panic("Server already running")
 	}
 
-	srv.log.Infof("Starting Dragonfly for Minecraft v%v...", protocol.CurrentVersion)
+	srv.log.Infof("Starting MockingJay for Minecraft v%v...", protocol.CurrentVersion)
 	if err := srv.startListening(); err != nil {
 		return err
 	}

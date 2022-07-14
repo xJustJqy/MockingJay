@@ -31,14 +31,9 @@ func (e *ExperienceManager) Add(amount int) (level int, progress float64) {
 	e.mu.Lock()
 	defer e.mu.Unlock()
 	e.experience += amount
-	return progressFromExperience(e.total())
-}
-
-// Remove removes experience from the total experience and recalculates the level and progress if necessary.
-func (e *ExperienceManager) Remove(amount int) (level int, progress float64) {
-	e.mu.Lock()
-	defer e.mu.Unlock()
-	e.experience -= amount
+	if e.experience < 0 {
+		e.experience = 0
+	}
 	return progressFromExperience(e.total())
 }
 

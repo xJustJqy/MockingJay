@@ -23,7 +23,8 @@ func (ch Chicken) Consume(_ *world.World, c Consumer) Stack {
 	} else {
 		c.Saturate(2, 1.2)
 		if rand.Float64() < 0.3 {
-			c.AddEffect(effect.New(effect.Hunger{}, 1, 30*time.Second))
+			id, _ := effect.ID(effect.Hunger{})
+			c.AddEffect(effect.New(id, effect.Hunger{}, 1, 30*time.Second))
 		}
 	}
 	return Stack{}

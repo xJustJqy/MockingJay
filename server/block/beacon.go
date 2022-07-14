@@ -174,15 +174,17 @@ func (b Beacon) broadcastBeaconEffects(pos cube.Pos, w *world.World) {
 	var primaryEff, secondaryEff effect.Effect
 	// Determining whether the primary power is set.
 	if primary != nil {
-		primaryEff = effect.NewAmbient(primary, 1, dur)
+		id, _ := effect.ID(primary)
+		primaryEff = effect.NewAmbient(id, primary, 1, dur)
 		// Secondary power can only be set if the primary power is set.
 		if secondary != nil {
 			// It is possible to select 2 primary powers if the beacon's level is 4. This then means that the effect
 			// should get a level of 2.
 			if primary == secondary {
-				primaryEff = effect.NewAmbient(primary, 2, dur)
+				primaryEff = effect.NewAmbient(id, primary, 2, dur)
 			} else {
-				secondaryEff = effect.NewAmbient(secondary, 1, dur)
+				id, _ = effect.ID(secondary)
+				secondaryEff = effect.NewAmbient(id, secondary, 1, dur)
 			}
 		}
 	}

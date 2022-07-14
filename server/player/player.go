@@ -12,6 +12,7 @@ import (
 	"github.com/df-mc/atomic"
 	"github.com/go-gl/mathgl/mgl64"
 	"github.com/google/uuid"
+	"github.com/sandertv/gophertunnel/minecraft/protocol"
 	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
 	"github.com/xJustJqy/MockingJay/server/block"
 	"github.com/xJustJqy/MockingJay/server/block/cube"
@@ -29,6 +30,7 @@ import (
 	"github.com/xJustJqy/MockingJay/server/player/bossbar"
 	"github.com/xJustJqy/MockingJay/server/player/chat"
 	"github.com/xJustJqy/MockingJay/server/player/form"
+	"github.com/xJustJqy/MockingJay/server/player/permissions"
 	"github.com/xJustJqy/MockingJay/server/player/scoreboard"
 	"github.com/xJustJqy/MockingJay/server/player/skin"
 	"github.com/xJustJqy/MockingJay/server/player/title"
@@ -98,6 +100,8 @@ type Player struct {
 	breakParticleCounter atomic.Uint32
 
 	hunger *hungerManager
+
+	permissions *permissions.PermissionManager
 }
 
 // New returns a new initialised player. A random UUID is generated for the player, so that it may be
@@ -134,13 +138,111 @@ func New(name string, skin skin.Skin, pos mgl64.Vec3) *Player {
 		pos:               *atomic.NewValue(pos),
 		cooldowns:         make(map[itemHash]time.Time),
 		mc:                &entity.MovementComputer{Gravity: 0.06, Drag: 0.02, DragBeforeGravity: true},
+		permissions:       permissions.New([]string{}),
 	}
 	p.session().PacketHandle(p.packet)
 	return p
 }
 
+func (p *Player) PermissionManager() *permissions.PermissionManager {
+	return p.permissions
+}
+
+func (p *Player) RefreshPermissions() {
+	p.sendAvailableCommands()
+}
+
+// sendAvailableCommands sends all available commands of the server. Once sent, they will be visible in the
+// /help list and will be auto-completed.
+func (p *Player) sendAvailableCommands() map[string]map[int]cmd.Runnable {
+	manager := p.PermissionManager()
+	s := p.session()
+	commands := cmd.Commands()
+	m := make(map[string]map[int]cmd.Runnable, len(commands))
+
+	pk := &packet.AvailableCommands{}
+	for alias, c := range commands {
+		if (!manager.HasPermission(c.Permission())) {
+			continue
+		}
+		if c.Name() != alias {
+			// Don't add duplicate entries for aliases.
+			continue
+		}
+		m[alias] = c.Runnables(s.C())
+
+		params := c.Params(s.C())
+		overloads := make([]protocol.CommandOverload, len(params))
+		for i, params := range params {
+			for _, paramInfo := range params {
+				t, enum := valueToParamType(paramInfo, s.C())
+				t |= protocol.CommandArgValid
+
+				opt := byte(0)
+				if _, ok := paramInfo.Value.(bool); ok {
+					opt |= protocol.ParamOptionCollapseEnum
+				}
+				overloads[i].Parameters = append(overloads[i].Parameters, protocol.CommandParameter{
+					Name:     paramInfo.Name,
+					Type:     t,
+					Optional: paramInfo.Optional,
+					Options:  opt,
+					Enum:     enum,
+					Suffix:   paramInfo.Suffix,
+				})
+			}
+		}
+		if len(params) > 0 {
+			pk.Commands = append(pk.Commands, protocol.Command{
+				Name:        c.Name(),
+				Description: c.Description(),
+				Aliases:     c.Aliases(),
+				Overloads:   overloads,
+			})
+		}
+	}
+	s.WritePacket(pk)
+	return m
+}
+
+// valueToParamType finds the command argument type of the value passed and returns it, in addition to creating
+// an enum if applicable.
+func valueToParamType(i cmd.ParamInfo, source cmd.Source) (t uint32, enum protocol.CommandEnum) {
+	switch i.Value.(type) {
+	case int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64:
+		return protocol.CommandArgTypeInt, enum
+	case float32, float64:
+		return protocol.CommandArgTypeFloat, enum
+	case string:
+		return protocol.CommandArgTypeString, enum
+	case cmd.Varargs:
+		return protocol.CommandArgTypeRawText, enum
+	case cmd.Target, []cmd.Target:
+		return protocol.CommandArgTypeTarget, enum
+	case bool:
+		return 0, protocol.CommandEnum{
+			Type:    "bool",
+			Options: []string{"true", "1", "false", "0"},
+		}
+	case mgl64.Vec3:
+		return protocol.CommandArgTypePosition, enum
+	case cmd.SubCommand:
+		return 0, protocol.CommandEnum{
+			Type:    "SubCommand" + i.Name,
+			Options: []string{i.Name},
+		}
+	}
+	if enum, ok := i.Value.(cmd.Enum); ok {
+		return 0, protocol.CommandEnum{
+			Type:    enum.Type(),
+			Options: enum.Options(source),
+			Dynamic: true,
+		}
+	}
+	return protocol.CommandArgTypeValue, enum
+}
+
 func (p *Player) packet(pk packet.Packet) {
-	fmt.Print(pk)
 	p.Handler().HandlePacket(pk)
 	switch tpk := pk.(type) {
 	case *packet.Text:
@@ -337,7 +439,7 @@ func (p *Player) Chat(msg ...any) {
 	if p.Handler().HandleChat(ctx); ctx.Cancelled() {
 		return
 	}
-	_, _ = fmt.Fprintf(chat.Global, ctx.Format() + "\n", p.name, ctx.Message())
+	_, _ = fmt.Fprintf(chat.Global, ctx.Format()+"\n", p.name, ctx.Message())
 }
 
 // ExecuteCommand executes a command passed as the player. If the command could not be found, or if the usage
@@ -2011,7 +2113,7 @@ func (p *Player) AddExperience(amount int) int {
 
 // RemoveExperience removes experience from the player.
 func (p *Player) RemoveExperience(amount int) {
-	p.experience.Remove(amount)
+	p.experience.Add(-amount)
 	p.session().SendExperience(p.experience)
 }
 
@@ -2119,7 +2221,8 @@ func (p *Player) Tick(w *world.World, current int64) {
 	if _, ok := w.Liquid(cube.PosFromVec3(p.Position())); !ok {
 		p.StopSwimming()
 		if _, ok := p.Armour().Helmet().Item().(item.TurtleShell); ok {
-			p.AddEffect(effect.New(effect.WaterBreathing{}, 1, time.Second*10))
+			id, _ := effect.ID(effect.WaterBreathing{})
+			p.AddEffect(effect.New(id, effect.WaterBreathing{}, 1, time.Second*10))
 		}
 	}
 

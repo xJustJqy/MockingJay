@@ -173,6 +173,10 @@ func New(conn Conn, maxChunkRadius int, log Logger, joinMessage, quitMessage *at
 	return s
 }
 
+func (s *Session) C() Controllable {
+	return s.c
+}
+
 // Spawn makes the Controllable passed spawn in the world.World.
 // The function passed will be called when the session stops running.
 func (s *Session) Spawn(c Controllable, w *world.World, gm world.GameMode, onStop func(controllable Controllable)) {
@@ -475,6 +479,10 @@ func (s *Session) registerHandlers() {
 		packet.IDText:                  &TextHandler{},
 		packet.IDTickSync:              nil,
 	}
+}
+
+func (s *Session) WritePacket(pk packet.Packet) {
+	s.writePacket(pk)
 }
 
 // writePacket writes a packet to the session's connection if it is not Nop.

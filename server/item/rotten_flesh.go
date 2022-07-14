@@ -17,7 +17,8 @@ type RottenFlesh struct {
 func (RottenFlesh) Consume(_ *world.World, c Consumer) Stack {
 	c.Saturate(4, 0.8)
 	if rand.Float64() < 0.8 {
-		c.AddEffect(effect.New(effect.Hunger{}, 1, 30*time.Second))
+		id, _ := effect.ID(effect.Hunger{})
+		c.AddEffect(effect.New(id, effect.Hunger{}, 1, 30*time.Second))
 	}
 	return Stack{}
 }

@@ -41,6 +41,7 @@ type Type interface {
 // Effect is an effect that can be added to an entity. Effects are either instant (applying the effect only once) or
 // lasting (applying the effect every tick).
 type Effect struct {
+	id                       int
 	t                        Type
 	d                        time.Duration
 	lvl                      int
@@ -49,19 +50,19 @@ type Effect struct {
 
 // NewInstant returns a new instant Effect using the Type passed. The effect will be applied to an entity once
 // and will expire immediately after.
-func NewInstant(t Type, lvl int) Effect {
+func NewInstant(id int, t Type, lvl int) Effect {
 	return Effect{t: t, lvl: lvl}
 }
 
 // New creates a new Effect using a LastingType passed. Once added to an entity, the time.Duration passed will be ticked down
 // by the entity until it reaches a duration of 0.
-func New(t LastingType, lvl int, d time.Duration) Effect {
+func New(id int, t LastingType, lvl int, d time.Duration) Effect {
 	return Effect{t: t, lvl: lvl, d: d}
 }
 
 // NewAmbient creates a new ambient (reduced particles, as when using a beacon) Effect using a LastingType passed. Once added
 // to an entity, the time.Duration passed will be ticked down by the entity until it reaches a duration of 0.
-func NewAmbient(t LastingType, lvl int, d time.Duration) Effect {
+func NewAmbient(id int, t LastingType, lvl int, d time.Duration) Effect {
 	return Effect{t: t, lvl: lvl, d: d, ambient: true}
 }
 
@@ -98,6 +99,10 @@ func (e Effect) Ambient() bool {
 // was created using New or NewAmbient, or NewInstant.
 func (e Effect) Type() Type {
 	return e.t
+}
+
+func (e Effect) ID() int {
+	return e.id
 }
 
 // TickDuration ticks the effect duration, subtracting time.Second/20 from the leftover time and returning the resulting

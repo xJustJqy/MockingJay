@@ -46,6 +46,7 @@ type Command struct {
 	description string
 	usage       string
 	aliases     []string
+	permission  string
 }
 
 // New returns a new Command using the name and description passed. The Runnable passed must be a
@@ -53,7 +54,7 @@ type Command struct {
 // When the command is run, the Run method of the Runnable will be called, after all fields have their values
 // from the parsed command set.
 // If r is not a struct or a pointer to a struct, New panics.
-func New(name, description string, aliases []string, r ...Runnable) Command {
+func New(name, description string, aliases []string, permission string, r ...Runnable) Command {
 	usages := make([]string, len(r))
 	runnableValues := make([]reflect.Value, len(r))
 
@@ -86,13 +87,17 @@ func New(name, description string, aliases []string, r ...Runnable) Command {
 		runnableValues[i], usages[i] = original, parseUsage(name, cp)
 	}
 
-	return Command{name: name, description: description, aliases: aliases, v: runnableValues, usage: strings.Join(usages, "\n")}
+	return Command{name: name, description: description, aliases: aliases, v: runnableValues, usage: strings.Join(usages, "\n"), permission: permission}
 }
 
 // Name returns the name of the command. The name is guaranteed to be lowercase and will never have spaces in
 // it. This name is used to call the command, and is shown in the /help list.
 func (cmd Command) Name() string {
 	return cmd.name
+}
+
+func (cmd Command) Permission() string {
+	return cmd.permission
 }
 
 // Description returns the description of the command. The description is shown in the /help list, and

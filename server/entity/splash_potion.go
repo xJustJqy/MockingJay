@@ -127,7 +127,7 @@ func (s *SplashPotion) Tick(w *world.World, current int64) {
 				splashed := e.(Living)
 				for _, eff := range effects {
 					if p, ok := eff.Type().(effect.PotentType); ok {
-						splashed.AddEffect(effect.NewInstant(p.WithPotency(f), eff.Level()))
+						splashed.AddEffect(effect.NewInstant(eff.ID(), p.WithPotency(f), eff.Level()))
 						continue
 					}
 
@@ -135,7 +135,7 @@ func (s *SplashPotion) Tick(w *world.World, current int64) {
 					if dur < time.Second {
 						continue
 					}
-					splashed.AddEffect(effect.New(eff.Type().(effect.LastingType), eff.Level(), dur))
+					splashed.AddEffect(effect.New(eff.ID(), eff.Type().(effect.LastingType), eff.Level(), dur))
 				}
 			}
 		} else if s.t == potion.Water() {

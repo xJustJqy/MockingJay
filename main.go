@@ -1,11 +1,11 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
 
-	"github.com/pelletier/go-toml"
 	"github.com/sirupsen/logrus"
 	"github.com/xJustJqy/MockingJay/server"
 	"github.com/xJustJqy/MockingJay/server/player/chat"
@@ -33,24 +33,24 @@ func main() {
 	}
 }
 
-// readConfig reads the configuration from the config.toml file, or creates the file if it does not yet exist.
+// readConfig reads the configuration from the config.json file, or creates the file if it does not yet exist.
 func readConfig() (server.Config, error) {
 	c := server.DefaultConfig()
-	if _, err := os.Stat("config.toml"); os.IsNotExist(err) {
-		data, err := toml.Marshal(c)
+	if _, err := os.Stat("config.json"); os.IsNotExist(err) {
+		data, err := json.Marshal(c.Marshalable())
 		if err != nil {
 			return c, fmt.Errorf("failed encoding default config: %v", err)
 		}
-		if err := ioutil.WriteFile("config.toml", data, 0644); err != nil {
+		if err := ioutil.WriteFile("config.json", data, 0644); err != nil {
 			return c, fmt.Errorf("failed creating config: %v", err)
 		}
 		return c, nil
 	}
-	data, err := ioutil.ReadFile("config.toml")
+	data, err := ioutil.ReadFile("config.json")
 	if err != nil {
 		return c, fmt.Errorf("error reading config: %v", err)
 	}
-	if err := toml.Unmarshal(data, &c); err != nil {
+	if err := json.Unmarshal(data, &c); err != nil {
 		return c, fmt.Errorf("error decoding config: %v", err)
 	}
 	return c, nil

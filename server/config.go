@@ -25,6 +25,8 @@ type Config struct {
 		// QuitMessage is the message that appears when a player leaves the server. Leave this empty to disable it.
 		// %v is the placeholder for the username of the player
 		QuitMessage string
+		// Operators is a list of player's with operator permissions.
+		Operators []string
 	}
 	World struct {
 		// Name is the name of the world that the server holds. A world with this name will be loaded and
@@ -62,6 +64,37 @@ type Config struct {
 	WorldConfig func(def world.Config) world.Config `toml:"-"`
 }
 
+func (c *Config) Marshalable() map[string]any {
+	return map[string]any{
+		"Network": map[string]any{
+			"Address": c.Network.Address,
+		},
+		"Server": map[string]any{
+			"Name": c.Server.Name,
+			"AuthEnabled": c.Server.AuthEnabled,
+			"JoinMessage": c.Server.JoinMessage,
+			"QuitMessage": c.Server.QuitMessage,
+			"ShutdownMessage": c.Server.ShutdownMessage,
+			"Operators": c.Server.Operators,
+		},
+		"World": map[string]any{
+			"Name": c.World.Name,
+			"Folder": c.World.Folder,
+		},
+		"Players": map[string]any{
+			"MaxCount": c.Players.MaxCount,
+			"MaximumChunkRadius": c.Players.MaximumChunkRadius,
+			"SaveData": c.Players.SaveData,
+			"Folder": c.Players.Folder,
+		},
+		"Resources": map[string]any{
+			"AutoBuildPack": c.Resources.AutoBuildPack,
+			"Required": c.Resources.Required,
+			"Folder": c.Resources.Folder,
+		},
+	}
+}
+
 // DefaultConfig returns a configuration with the default values filled out.
 func DefaultConfig() Config {
 	c := Config{}
@@ -79,5 +112,6 @@ func DefaultConfig() Config {
 	c.Resources.AutoBuildPack = true
 	c.Resources.Folder = "resources"
 	c.Resources.Required = false
+	c.Server.Operators = []string{}
 	return c
 }

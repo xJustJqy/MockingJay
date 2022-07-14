@@ -1,16 +1,14 @@
 <!--suppress ALL -->
 <img height="310" alt="image" src="https://user-images.githubusercontent.com/16114089/121805566-0cd81280-cc4c-11eb-9b7d-b5f8a6db4f8d.png" align="right">
 
-# Dragonfly
+# MockingJay
 
-Dragonfly is a heavily asynchronous server software for Minecraft Bedrock Edition written in Go. It was written with scalability
-and simplicity in mind and aims to make the process of setting up a server and modifying it easy. Unlike other
-Minecraft server software, Dragonfly is generally used as a library to extend.
+MockingJay is a heavily asynchronous server software for Minecraft Bedrock Edition written in Go. This software was forked from [Dragonfly](https://github.com/df-mc/dragonfly). It is being modified to accomodate a less source-heavy development style, allowing for plugins to be developed and shared. MockingJay is generally meant for use as a library.
 
 [![Discord Banner 2](https://discordapp.com/api/guilds/623638955262345216/widget.png?style=banner2)](https://discord.gg/U4kFWHhTNR)
 
 ## Getting started
-Running Dragonfly requires at least **Go 1.18**. After starting the server through one of the methods below,
+Running MockingJay requires at least **Go 1.18**. After starting the server through one of the methods below,
 **ctrl+c** may be used to shut down the server. Also check out the [wiki](https://github.com/xJustJqy/MockingJay/wiki) for
 more detailed info.
 
@@ -20,25 +18,20 @@ go mod init github.com/<user>/<module name>
 go get github.com/xJustJqy/MockingJay
 ```
 
-![SetupLibrary](https://user-images.githubusercontent.com/16114089/121804512-0f843900-cc47-11eb-9320-d195393b5a1f.gif)
-
 #### Installation of the latest commit
 ```
 git clone https://github.com/xJustJqy/MockingJay
-cd dragonfly
+cd mockingjay
 go run main.go
 ```
-
-![SetupClone](https://user-images.githubusercontent.com/16114089/121804495-ff6c5980-cc46-11eb-8e31-df4d94782e5b.gif)
-
 
 ## Developer info
 [![Go Reference](https://pkg.go.dev/badge/github.com/xJustJqy/MockingJay/server.svg)](https://pkg.go.dev/github.com/xJustJqy/MockingJay/server)
 
-Dragonfly features a well-documented codebase with an easy-to-use API. Documentation may be found
+MockingJay features a well-documented codebase with an easy-to-use API. Documentation may be found
 [here](https://pkg.go.dev/github.com/xJustJqy/MockingJay/server) and in the subpackages found by clicking *Directories*.
 
-Publishing your project on GitHub? Consider adding the **[#df-mc](https://github.com/topic/df-mc)** topic to your
+Publishing your project on GitHub? Consider adding the **[#mockingjay-server](https://github.com/topics/mockingjay-server)** topic to your
 repository to improve visibility of your project.
 
 ## Contributing
