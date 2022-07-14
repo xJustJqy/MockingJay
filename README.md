@@ -24,7 +24,7 @@ go run main.go
 ```
 
 ## Developer info
-[![Go Reference](https://pkg.go.dev/badge/github.com/xJustJqy/MockingJay/server.svg)](https://pkg.go.dev/github.com/xJustJqy/MockingJay/server)
+[![Go Reference](https://pkg.go.dev/badge/github.com/xJustJqy/MockingJay/server.svg)](https://pkg.go.dev/github.com/xJustJqy/MockingJay)
 
 MockingJay features a well-documented codebase with an easy-to-use API. Documentation may be found
 [here](https://pkg.go.dev/github.com/xJustJqy/MockingJay/server) and in the subpackages found by clicking *Directories*.
