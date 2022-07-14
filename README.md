@@ -34,5 +34,4 @@ repository to improve visibility of your project.
 
 ## Contributing
 Contributions are very welcome! Issues, pull requests and feature requests are highly appreciated. Opening a pull
-request? Consider joining our [Discord server](https://discord.gg/U4kFWHhTNR) to discuss your changes! Also have a read through the
-[CONTRIBUTING.md](https://github.com/xJustJqy/MockingJay/blob/master/.github/CONTRIBUTING.md) for more info.
+request? Also have a read through the [CONTRIBUTING.md](https://github.com/xJustJqy/MockingJay/blob/master/.github/CONTRIBUTING.md) for more info.
